@@ -40,10 +40,14 @@ def download_playlist(option, playlist_url, base_folder):
     if option == "video":
         # Configuración para videos en máxima calidad
         ydl_opts = {
-            'format': 'bestvideo+bestaudio/best',
-            'outtmpl': f'{video_folder}/%(title)s.%(ext)s',
-            'progress_hooks': [lambda p: progress_hook(p, progress_bar)],
-        }
+            'format': 'bestvideo+bestaudio/best',  # Selecciona el mejor video y audio
+            'outtmpl': f'{video_folder}/%(title)s.%(ext)s',  # Ruta de salida
+            'progress_hooks': [lambda p: progress_hook(p, progress_bar)],  # Barra de progreso
+            'postprocessors': [{
+                'key': 'FFmpegVideoConvertor',
+                'preferedformat': 'mp4',  # Convierte el video a MP4
+            }],
+        }   
     elif option == "audio":
         # Configuración para solo audio en máxima calidad
         ydl_opts = {
