@@ -1,0 +1,9 @@
+git add .
+git commit -m "Descripción de los cambios"
+git push origin nombre-de-tu-rama
+
+git branch
+git checkout nombre-de-la-rama
+git checkout -b nueva-rama
+git switch nombre-de-la-rama
+git switch -c nueva-rama
