@@ -15,7 +15,12 @@ def download_video_and_audio(option, playlist_url, base_folder):
     if option == "audio_only":
         ydl_opts.update({
             'format': 'bestaudio/best',  # Download only the best audio
-            'outtmpl': os.path.join(base_folder, '%(playlist)s/audio/%(title)s.%(ext)s')
+            'outtmpl': os.path.join(base_folder, '%(playlist)s/audio/%(title)s.%(ext)s'),
+            'postprocessors': [{
+                'key': 'FFmpegExtractAudio',
+                'preferredcodec': 'mp3',
+                'preferredquality': '320',
+            }],
         })
 
     try:
