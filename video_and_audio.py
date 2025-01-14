@@ -1,5 +1,9 @@
 import yt_dlp
 import os
+import time
+import random
+from concurrent.futures import ThreadPoolExecutor
+from yt_dlp.utils import DownloadError
 
 def download_video_and_audio(option, playlist_url, base_folder):
     ydl_opts = {
@@ -13,21 +17,30 @@ def download_video_and_audio(option, playlist_url, base_folder):
             'format': 'bestaudio/best',  # Download only the best audio
             'outtmpl': os.path.join(base_folder, '%(playlist)s/audio/%(title)s.%(ext)s')
         })
-    
-    # Descargar la playlist
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        ydl.download([playlist_url])
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([playlist_url])
+    except DownloadError as e:
+        print(f"Error downloading video: {e}")
 
 def progress_hook(d):
-    if d['status'] == 'downloading':
-        print(f"Downloading: {d['filename']} | {d['percent']}% | {d['speed']} | ETA: {d['eta']}s")
-    elif d['status'] == 'finished':
-        print(f"Download finished: {d['filename']}")
+    print(f"Downloading: {d['filename']} | {d.get('percent', 'N/A')}% | {d.get('speed', 'N/A')} | ETA: {d.get('eta', 'N/A')}s")
+
+def download_videos_concurrently(option, playlist_urls, base_folder):
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = []
+        for url in playlist_urls:
+            futures.append(executor.submit(download_video_and_audio, option, url, base_folder))
+            time.sleep(random.uniform(1, 3))  # Random delay between downloads to avoid detection
+
+        for future in futures:
+            future.result()
 
 def main():
-    # URL de la playlist y carpeta base
-    playlist_url = input("Enter the playlist URL: ")
-    base_folder = input("Enter the base folder path: ")
+    # URLs de las playlists y carpeta base
+    playlist_urls = input("Enter the playlist URLs (comma separated): ").split(',')
+    base_folder = "C:\\Users\\rodri\\Music"
     
     # Opción del usuario
     print("Choose an option:")
@@ -37,7 +50,7 @@ def main():
     option = input("Enter the number for your option (1/2): ")
     option = "audio_only" if option == "2" else "video_audio"
 
-    download_video_and_audio(option, playlist_url, base_folder)
+    download_videos_concurrently(option, playlist_urls, base_folder)
 
 if __name__ == "__main__":
     main()
