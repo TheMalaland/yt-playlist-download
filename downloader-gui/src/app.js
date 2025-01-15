@@ -12,7 +12,7 @@ app.use(express.json());
 app.post('/download', (req, res) => {
     const { urls, option } = req.body;
     console.log(`Received download request: URLs=${urls}, Option=${option}`);
-    const command = `python ../video_and_audio.py "${urls.join(',')}" "${option}"`;
+    const command = `python ../video_and_audiov2.py "${urls.join(',')}" "${option}"`;
 
     exec(command, (error, stdout, stderr) => {
         if (error) {
