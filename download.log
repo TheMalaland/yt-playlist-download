@@ -1,0 +1,22 @@
+2025-01-14 00:04:50,523 - ERROR - Error downloading video (attempt 1): [0;31mERROR:[0m [youtube:tab] PLnFBc0hUMqKfD6Y60ZKiJ9lc4JuE4m7q_ : Unable to download API page: HTTP Error 400: Bad Request (caused by <HTTPError 400: Bad Request>)
+2025-01-14 00:04:52,872 - ERROR - Error downloading video (attempt 2): [0;31mERROR:[0m [youtube:tab] PLnFBc0hUMqKfD6Y60ZKiJ9lc4JuE4m7q_ : Unable to download API page: HTTP Error 400: Bad Request (caused by <HTTPError 400: Bad Request>)
+2025-01-14 00:04:55,959 - ERROR - Error downloading video (attempt 3): [0;31mERROR:[0m [youtube:tab] PLnFBc0hUMqKfD6Y60ZKiJ9lc4JuE4m7q_ : Unable to download API page: HTTP Error 400: Bad Request (caused by <HTTPError 400: Bad Request>)
+2025-01-14 00:04:55,959 - ERROR - Failed to download video after 3 attempts: https://www.youtube.com/playlist?list=PLnFBc0hUMqKfD6Y60ZKiJ9lc4JuE4m7q_ 
+2025-01-14 00:04:56,204 - ERROR - Error processing future: '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:04:58,853 - ERROR - Error processing future: '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:05:34,718 - ERROR - Error processing future: '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:06:16,364 - ERROR - Error processing future: '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:08:08,416 - ERROR - Unexpected error in main: invalid literal for int() with base 10: ''
+2025-01-14 00:08:38,551 - ERROR - Unexpected error in main: 
+2025-01-14 00:09:40,204 - ERROR - Error downloading video (attempt 1): [0;31mERROR:[0m [youtube] 7RWcEq17cWI: Video unavailable. This video is not available
+2025-01-14 00:10:30,558 - ERROR - Error downloading video (attempt 2): [0;31mERROR:[0m [youtube] 7RWcEq17cWI: Video unavailable. This video is not available
+2025-01-14 00:11:19,537 - ERROR - Error downloading video (attempt 3): [0;31mERROR:[0m [youtube] 7RWcEq17cWI: Video unavailable. This video is not available
+2025-01-14 00:11:19,537 - ERROR - Failed to download video after 3 attempts: https://www.youtube.com/playlist?list=PLnFBc0hUMqKfD6Y60ZKiJ9lc4JuE4m7q_
+2025-01-14 00:12:27,351 - ERROR - Unexpected error (attempt 1): '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:12:31,873 - ERROR - Unexpected error (attempt 2): '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:12:36,155 - ERROR - Unexpected error (attempt 3): '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:12:36,155 - ERROR - Failed to download video after 3 attempts: https://www.youtube.com/playlist?list=PLc4QYyP_oKZpVpBxK9Vj0h4itHrp7tvri
+2025-01-14 00:12:49,112 - ERROR - Unexpected error (attempt 1): '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:12:53,255 - ERROR - Unexpected error (attempt 2): '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:12:57,452 - ERROR - Unexpected error (attempt 3): '>' not supported between instances of 'float' and 'str'
+2025-01-14 00:12:57,452 - ERROR - Failed to download video after 3 attempts: https://www.youtube.com/playlist?list=PLc4QYyP_oKZpVpBxK9Vj0h4itHrp7tvri

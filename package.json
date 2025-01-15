@@ -1,0 +1,8 @@
+{
+    "name": "yt-video-download",
+    "version": "1.0.0",
+    "scripts": {
+      "install-all": "cd downloader-gui && npm install",
+      "start": "cd downloader-gui && npm start"
+    }
+  }

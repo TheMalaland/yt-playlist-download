@@ -7,7 +7,7 @@ from yt_dlp.utils import DownloadError
 
 def download_video_and_audio(option, playlist_url, base_folder):
     ydl_opts = {
-        'format': 'bestvideo+bestaudio/best',  # Download best video and audio combined
+        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]',  # Download best video and audio in MP4 format
         'outtmpl': os.path.join(base_folder, '%(playlist)s/%(title)s.%(ext)s'),
         'progress_hooks': [progress_hook],
     }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloader GUI</title>
+</head>
+<body>
+    <h1>Welcome to the Downloader GUI</h1>
+    <form id="download-form">
+        <input type="text" name="urls" placeholder="Enter URLs" required>
+        <select name="option">
+            <option value="video">Video</option>
+            <option value="audio_only">Audio Only</option>
+        </select>
+        <button type="submit">Download</button>
+    </form>
+
+    <script>
+        document.getElementById('download-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const urls = formData.get('urls').split(',');
+            const option = formData.get('option');
+
+            fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ urls, option })
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                alert(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error starting download');
+            });
+        });
+    </script>
+</body>
+</html>
