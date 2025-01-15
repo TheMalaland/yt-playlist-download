@@ -62,6 +62,7 @@ def main():
     elapsed_time = end_time - start_time
     print(f"All downloads are complete. Files are saved in: {base_folder}")
     print(f"Total execution time: {elapsed_time:.2f} seconds")
+    sys.exit(0)  # Exit the program
 
 if __name__ == "__main__":
     main()
