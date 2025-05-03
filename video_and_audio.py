@@ -16,7 +16,7 @@ def download_video_and_audio(option, playlist_url, base_folder):
     if option == "audio_only":
         ydl_opts.update({
             'format': 'bestaudio/best',  # Download only the best audio
-            'outtmpl': os.path.join(base_folder, '%(playlist)s/audio/%(title)s.%(ext)s'),
+            'outtmpl': os.path.join(base_folder, '%(playlist)s/%(title)s.%(ext)s'),
             'postprocessors': [{
                 'key': 'FFmpegExtractAudio',
                 'preferredcodec': 'mp3',
@@ -44,19 +44,33 @@ def download_videos_concurrently(option, playlist_urls, base_folder):
             future.result()
 
 def main():
+    # Get the current user's name
+    user_name = os.getlogin()
 
-    # URLs de las playlists y carpeta base
+    # Define base folders based on the option
+    video_folder = f"C:\\Users\\{user_name}\\Videos\\yt-download"
+    audio_folder = f"C:\\Users\\{user_name}\\Music\\yt-downloader-music"
+
+    # Ensure the folders exist
+    os.makedirs(video_folder, exist_ok=True)
+    os.makedirs(audio_folder, exist_ok=True)
+
+    # URLs of the playlists
     playlist_urls = input("Enter the playlist URLs (comma separated): ").split(',')
-    base_folder = "C:\\Users\\rodri\\Music"
-    
-    # Opción del usuario
+
+    # User option
     print("Choose an option:")
     print("1. Video & Audio")
     print("2. Audio Only")
     
     start_time = time.time()  # Record the start time
     option = input("Enter the number for your option (1/2): ")
-    option = "audio_only" if option == "2" else "video_audio"
+    if option == "2":
+        base_folder = audio_folder
+        option = "audio_only"
+    else:
+        base_folder = video_folder
+        option = "video_audio"
     end_time = time.time()  # Record the end time
 
     elapsed_time = end_time - start_time
